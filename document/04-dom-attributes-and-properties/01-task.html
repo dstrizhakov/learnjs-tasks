@@ -1,0 +1,21 @@
+<!-- Получите атрибут
+важность: 5
+Напишите код для выбора элемента с атрибутом data-widget-name из документа и 
+прочитайте его значение. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+  <div data-widget-name="menu">Choose the genre</div>
+
+  <script>
+		// получаем элемент по атрибуту data-widget-name
+    let element = document.querySelector('[data-widget-name]');
+		// получаем атрибут widgetName из dataset така как это data-атрибут
+		console.log(element.dataset.widgetName);
+		// или обычным способом
+		console.log (element.getAttribute('data-widget-name'));
+  </script>
+</body>
+</html>
