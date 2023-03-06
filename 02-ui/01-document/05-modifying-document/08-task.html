@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+	<div class="time">
+		<span class="hour" style="color: red;">hh</span>
+		<span class="divider">:</span>
+		<span class="min" style="color: green">mm</span>
+		<span class="divider">:</span>
+		<span class="sec" style="color: blue">ss</span>
+	</div>
+  <!-- клик по этой кнопке вызовет clockStart() -->
+  <input type="button" onclick="clockStart()" value="Старт">
+
+  <!-- клик по этой кнопке вызовет clockStop() -->
+  <input type="button" onclick="clockStop()" value="Стоп">
+	<script>
+		let hourEl = document.querySelector('.hour')
+		let minEl = document.querySelector('.min')
+		let secEl = document.querySelector('.sec')
+		let stop = false;
+
+		function clock() {
+			const date = new Date();
+			const currentTime = date.toLocaleTimeString();
+			let [hours, mins, seconds] = currentTime.split(':');
+			hourEl.textContent = hours;
+			minEl.textContent = mins;
+			secEl.textContent = seconds;
+			
+			if(!stop) {
+				setTimeout(clock, 1000)
+			}	
+		}
+
+		function clockStart() {
+			stop = false;
+			clock();
+		}
+		function clockStop() {
+			stop = true;
+		}
+		
+	</script>
+</body>
+</html>
