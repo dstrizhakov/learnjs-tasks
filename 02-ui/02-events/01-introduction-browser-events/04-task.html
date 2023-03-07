@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    #field {
+      width: 200px;
+      height: 150px;
+      border: 10px solid black;
+      background-color: #00FF00;
+      overflow: hidden;
+      position: relative;
+			cursor: pointer;
+    }
+    #ball {
+      position: absolute;
+      /* width: 30px;
+      height: 30px; */
+      /* top: 0px;
+      left: 0px;
+      transform: translate(20px, 100px); */
+      transition: all 0.3s ease 0s;
+    }
+  </style>
+</head>
+
+<body style="height:2000px">
+
+  Нажмите на поле для перемещения мяча.
+  <br> Мяч не должен выходить за границы поля.
+
+
+  <div id="field">
+    <img src="https://ru.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+<script>
+  let field = document.getElementById('field');
+  let ball = document.getElementById('ball');
+
+  field.addEventListener('click', handler);
+
+  function handler (event) {
+		//координаты поля coords.left и coords.top
+		let coordsField = this.getBoundingClientRect();
+		let ballSize = parseInt(getComputedStyle(ball).width);
+
+		// относительные координаты мяча на поле
+    let xCoord = event.clientX - coordsField.left - field.clientLeft - ballSize/2;
+    let yCoord = event.clientY - coordsField.top - field.clientTop - ballSize/2;
+		
+		//верхняя граница
+		if (yCoord < 0 ) {
+			yCoord = 0;
+    }
+		//левая граница
+		if (xCoord < 0 ) {
+			xCoord = 0;
+    }
+		// правая граница
+		if (xCoord + ballSize > field.clientWidth) {
+			xCoord = field.clientWidth - ballSize;
+      }
+		// нижняя граница
+		if (yCoord + ballSize > field.clientHeight) {
+			yCoord = field.clientHeight - ballSize;
+      }
+
+
+		ball.style.left = `${xCoord}px`;
+		ball.style.top = `${yCoord}px`;
+  }
+</script>
+
+</body>
+</html>

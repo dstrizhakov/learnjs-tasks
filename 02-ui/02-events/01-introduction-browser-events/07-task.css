@@ -1,0 +1,77 @@
+.arrow {
+  padding: 0;
+  background: #ddd;
+  border-radius: 50%;
+  border: 1px solid gray;
+  font-size: 24px;
+  line-height: 24px;
+	width: 40px;
+	height: 40px;
+  color: #444;
+  display: block;
+	position: absolute;
+}
+.left {
+	top: 50%;
+	transform: translateY(-50%);
+	left: 10px;
+}
+.right {
+	top: 50%;
+	transform: translateY(-50%);
+	right: 10px;
+}
+.slides {
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.arrow:focus {
+  outline: none;
+}
+
+.arrow:hover {
+  background: #ccc;
+  cursor: pointer;
+}
+
+ul {
+  height: 130px;
+  width: 9999px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0;
+	position: absolute;
+transition: all 0.5s ease 0s;
+}
+
+ul img {
+  width: 130px;
+  height: 130px;
+  display: block; /* убираем пустое место вокруг картинок */
+}
+
+ul li {
+  display: inline-block; /* убираем пустое место между элементами списка */
+}
+
+.viewport {
+	width: 390px;
+	position: relative;
+	height: 200px;
+	overflow: hidden;
+}
+.slider {
+	position: relative;
+	width: 500px;
+	display: flex;
+	justify-content: center;
+	background-color: #cccccc46;
+	overflow: hidden;
+	border-radius: 10px;
+}
+body {
+	display: flex;
+	justify-content: center;
+}
