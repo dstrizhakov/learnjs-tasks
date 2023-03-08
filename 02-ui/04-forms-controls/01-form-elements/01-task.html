@@ -1,0 +1,25 @@
+<!-- Добавьте пункт к выпадающему списку
+важность: 5
+Имеется <select>: -->
+
+<select id="genres">
+  <option value="rock">Рок</option>
+  <option value="blues" selected>Блюз</option>
+</select>
+
+<!-- Используя JavaScript:
+
+Выведите значение и текст выбранного пункта.
+Добавьте пункт: <option value="classic">Классика</option>.
+Сделайте его выбранным. -->
+
+<script>
+	// получаем выбранную опцию
+	let selectedOption = genres.options[genres.selectedIndex];
+	console.log(`Selected option value: ${selectedOption.value}, text: ${selectedOption.text}`)
+	// создаем новую опцию и добавляем ее в select
+	let option = new Option ("Классика", "classic");
+	genres.append(option);
+	// выделяем новую опцию в select
+	option.selected = true;
+</script>

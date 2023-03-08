@@ -1,0 +1,25 @@
+.edit {
+	background-color: aliceblue;
+}
+.actions {
+position: absolute;
+}
+.actions button {
+	padding: 5px;
+	border: 1px solid black;
+	border-radius: 4px;
+	transition: all 0.1s ease 0s;
+}
+.actions button {
+	margin-right: 5px;
+}
+.actions button:first-child:hover {
+	color: white;
+	border: 1px solid green;
+	background-color: green;
+}
+.actions button:last-child:hover {
+	color: white;
+	border: 1px solid red;
+	background-color: red;
+}
