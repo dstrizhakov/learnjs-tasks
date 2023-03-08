@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    table {
+       border-collapse: collapse;
+     }
+     th, td {
+       border: 1px solid black;
+       padding: 4px;
+     }
+     th {
+       cursor: pointer;
+     }
+     th:hover {
+       background: yellow;
+     }
+  </style>
+</head>
+
+<body>
+
+  <table id="grid">
+    <thead>
+      <tr>
+        <th data-type="number">Возраст</th>
+        <th data-type="string">Имя</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5</td>
+        <td>Вася</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Петя</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Женя</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Маша</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Илья</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+		const table = document.getElementById('grid');
+
+		table.addEventListener('click', function(event) {
+			if (event.target.tagName === 'TH') {
+				const sortBy = event.target.dataset.type;
+				const index = event.target.cellIndex;
+				const tbody = table.querySelector('tbody');
+				let rows = Array.from(tbody.rows);
+				let sorted;
+				if (sortBy === 'string') {
+					sorted = rows.sort((a, b) => a.cells[index].textContent.localeCompare(b.cells[index].textContent))
+				}
+				if (sortBy === 'number') {
+					sorted = rows.sort((a,b) => a.cells[index].textContent - b.cells[index].textContent)
+				}
+				tbody.append(...sorted)
+			}
+		})
+  </script>
+
+</body>
+</html>
